@@ -6,7 +6,7 @@
 
 const ADMIN = {
   /* Same Web App URL you paste into script.js */
-  API_URL: "",
+  API_URL: "https://script.google.com/macros/s/AKfycby-ygU0zKnUExzCtEVkqgjDOgYeRyyPX9zKl7QN4AMe6W90GL61MTptwAS-zj0WraRi/exec",
   KEY_STORE: "soleora_admin_key",
   LOCAL_ORDERS: "soleora_orders"
 };
