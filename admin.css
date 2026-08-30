@@ -8,8 +8,7 @@ body.admin{background:#f5f4f1}
   background:radial-gradient(circle at 20% 20%,#e9e4ff,transparent 45%),radial-gradient(circle at 80% 70%,#ffe0d3,transparent 45%),#faf8f5}
 .gate__card{background:#fff;border-radius:var(--r-xl);padding:36px 32px;width:min(400px,100%);
   box-shadow:var(--sh-3);display:flex;flex-direction:column;gap:12px;text-align:center;animation:popIn .4s var(--ease)}
-.gate__ico{width:56px;height:56px;border-radius:18px;background:var(--navy);color:var(--mint);display:grid;place-items:center;margin:0 auto 6px}
-.gate__ico .ico{width:26px;height:26px}
+.gate__logo{width:min(210px,74%);height:auto;margin:0 auto 8px}
 .gate h1{font-size:1.5rem}
 .gate p{color:var(--ink-3);font-size:.88rem}
 .gate input{padding:13px 16px;border-radius:12px;border:1.6px solid var(--line);background:#fdfcfb;outline:0;font-weight:600;text-align:center;letter-spacing:.06em}
@@ -24,7 +23,7 @@ body.admin{background:#f5f4f1}
 .adm__bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:12px clamp(14px,3vw,28px);flex-wrap:wrap}
 .adm__brand{display:flex;align-items:center;gap:11px}
-.adm__brand .logo__mark{width:38px;height:38px;border-radius:12px;background:var(--navy);color:var(--mint);display:grid;place-items:center}
+.adm__brand .logo__img{height:28px;width:auto}
 .adm__brand svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.2}
 .adm__brand b{display:block;font-weight:800;letter-spacing:.16em;font-size:.98rem;line-height:1.1}
 .adm__brand em{font-style:normal;font-size:.66rem;color:var(--ink-3);font-weight:600}

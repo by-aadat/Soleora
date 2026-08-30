@@ -133,6 +133,10 @@ ul{margin:0;padding:0;list-style:none}
 .logo__mark{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--navy);color:var(--mint);flex:none;box-shadow:0 8px 18px rgba(16,24,40,.22)}
 .logo__mark svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linejoin:round}
 .logo__sole{stroke:var(--coral);stroke-width:3}
+.logo__img{height:30px;width:auto;flex:none;transition:transform .35s var(--ease)}
+.logo:hover .logo__img{transform:translateY(-2px) rotate(-3deg)}
+.footer__logo{width:min(250px,72%);height:auto;margin-bottom:4px}
+.drawer__logo{height:26px;width:auto}
 .logo__text{font-weight:800;font-size:1.16rem;letter-spacing:.18em;line-height:1;display:flex;flex-direction:column;gap:3px}
 .logo__text em{font-style:normal;font-size:.52rem;letter-spacing:.16em;color:var(--ink-3);font-weight:600;text-transform:uppercase}
 
