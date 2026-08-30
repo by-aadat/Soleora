@@ -9,11 +9,11 @@ const CONFIG = {
   /* Paste your Google Apps Script Web App URL here after deploying.
      Example: "https://script.google.com/macros/s/AKfy.../exec"
      Leave empty to run the store in demo mode (orders saved locally). */
-  API_URL: "",
+  API_URL: "https://script.google.com/macros/s/AKfycby-ygU0zKnUExzCtEVkqgjDOgYeRyyPX9zKl7QN4AMe6W90GL61MTptwAS-zj0WraRi/exec",
 
   /* Set true only if you have added real photos inside images/products/.
      When false, SOLEORA draws its own premium shoe artwork (no 404s). */
-  USE_IMAGE_FILES: false,
+  USE_IMAGE_FILES: true,
 
   FREE_SHIP_ABOVE: 999,
   SHIPPING_FEE: 99,
