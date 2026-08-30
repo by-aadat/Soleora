@@ -97,7 +97,7 @@
     </button>
 
     <a href="#top" class="logo" aria-label="SOLEORA home">
-      <img class="logo__img" src="assets/logo-mark.png" alt="" width="1907" height="723" />
+      <img class="logo__img" src="assets/logo-mark.png" alt="" width="1907" height="723" onerror="this.hidden=true" />
       <span class="logo__text">SOLEORA<em>Step Into Your Style</em></span>
     </a>
 
@@ -133,7 +133,8 @@
 <div class="scrim" id="scrim" hidden></div>
 <aside class="drawer drawer--left" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
   <div class="drawer__head">
-    <img class="drawer__logo" src="assets/logo-mark.png" alt="SOLEORA" width="1907" height="723" />
+    <img class="drawer__logo" src="assets/logo-mark.png" alt="SOLEORA" width="1907" height="723" onerror="this.hidden=true" />
+    <span class="drawer__title">Menu</span>
     <button class="icon-btn" data-close="mobileMenu" aria-label="Close menu"><svg class="ico"><use href="#s-close"/></svg></button>
   </div>
   <nav class="mnav" aria-label="Mobile">
@@ -424,7 +425,10 @@
 <footer class="footer">
   <div class="container footer__grid">
     <div class="footer__brand">
-      <img class="footer__logo" src="assets/logo-light.png" alt="SOLEORA — Step Into Your Style" width="1200" height="672" />
+      <span class="footer__logoWrap">
+        <img class="footer__logo" src="assets/logo-light.png" alt="SOLEORA — Step Into Your Style" width="1200" height="672" onerror="this.closest('.footer__logoWrap').classList.add('no-img')" />
+        <span class="footer__logoText">SOLEORA<em>Step Into Your Style</em></span>
+      </span>
       <p class="footer__about">Premium footwear for every age, every gender and every journey. Designed for comfort, built to last.</p>
       <div class="socials">
         <a href="#" aria-label="Instagram"><svg class="ico"><use href="#s-instagram"/></svg></a>
@@ -447,7 +451,7 @@
       <h4>Legal</h4>
       <a href="#">Privacy policy</a><a href="#">Terms &amp; conditions</a><a href="#">Refund policy</a>
       <h4 class="footer__col-gap">Store</h4>
-      <a href="admin.html">Admin panel</a>
+      <a href="admin.html">Admin panel</a><a href="setup.html">Setup check</a>
     </div>
   </div>
   <div class="container footer__bottom">

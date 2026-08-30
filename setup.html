@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>SOLEORA — Setup check</title>
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin">
+
+<main class="setup">
+  <header class="setup__head">
+    <h1>Setup check</h1>
+    <p>Yeh page batata hai ki logo files load ho rahi hain ya nahi, aur Google Sheet backend jud raha hai ya nahi.</p>
+    <a class="btn btn--outline btn--sm" href="index.html">← Back to store</a>
+  </header>
+
+  <!-- FILES -->
+  <section class="panel setup__panel">
+    <div class="panel__head"><h2>1 · Files</h2><button class="btn btn--outline btn--sm" id="reFiles">Run again</button></div>
+    <ul class="checks" id="fileChecks"></ul>
+    <p class="hint" id="fileHint"></p>
+  </section>
+
+  <!-- BACKEND -->
+  <section class="panel setup__panel">
+    <div class="panel__head"><h2>2 · Google Sheet backend</h2></div>
+    <div class="setup__form">
+      <label>Web app URL (Apps Script <code>/exec</code> link)
+        <input id="apiUrl" placeholder="https://script.google.com/macros/s/AKfy…/exec" />
+      </label>
+      <label>Admin passcode (<code>ADMIN_KEY</code> from Code.gs)
+        <input id="apiKey" placeholder="soleora2026" />
+      </label>
+      <div class="setup__btns">
+        <button class="btn btn--dark" id="runBackend">Test connection</button>
+        <button class="btn btn--outline" id="runOrder">Send a test order</button>
+      </div>
+    </div>
+    <ul class="checks" id="apiChecks"></ul>
+    <pre class="log" id="log" hidden></pre>
+  </section>
+
+  <!-- FIXES -->
+  <section class="panel setup__panel">
+    <div class="panel__head"><h2>3 · Common fixes</h2></div>
+    <div class="fixes">
+      <details open>
+        <summary>Logo blank / broken dikh raha hai</summary>
+        <ol>
+          <li>Check karein ki <code>assets/</code> folder repo me upload hua hai. Chat se sirf single files download karne par ye folder chhoot jaata hai — hamesha <b>soleora.zip</b> extract karke poora folder upload karein.</li>
+          <li>GitHub par repo kholein: <code>assets/logo-mark.png</code> click karke dekhein ki image preview aa rahi hai. Na aaye to file upload nahi hui.</li>
+          <li>File names case-sensitive hain. <code>Logo-Mark.PNG</code> kaam nahi karega, sirf <code>logo-mark.png</code>.</li>
+          <li>Repo root me <code>.nojekyll</code> file honi chahiye, warna GitHub Pages kabhi-kabhi folders skip kar deta hai.</li>
+          <li>Purana version cache me ho sakta hai — <b>Ctrl+Shift+R</b> (Mac: Cmd+Shift+R) se hard refresh karein.</li>
+        </ol>
+      </details>
+      <details>
+        <summary>Google Sheet me data record nahi ho raha</summary>
+        <ol>
+          <li><code>script.js</code> ke <code>CONFIG.API_URL</code> aur <code>admin.js</code> ke <code>ADMIN.API_URL</code> — dono me web app ka <code>/exec</code> URL paste hona chahiye. Khaali chhodne par site demo mode me chalti hai.</li>
+          <li>URL <code>/exec</code> par khatam hona chahiye, <code>/dev</code> par nahi.</li>
+          <li>Apps Script me <code>SHEET_ID</code> bhara ho — placeholder text nahi.</li>
+          <li>Ek baar <code>setup</code> function Run karke permission approve ki ho (tabs <b>Orders</b> aur <b>Subscribers</b> ban jaayein).</li>
+          <li>Deploy karte waqt <b>Who has access: Anyone</b> chuna ho. "Anyone with Google account" se site ke requests block ho jaate hain.</li>
+          <li>Code.gs edit karne ke baad <b>Deploy → Manage deployments → Edit (pencil) → Version: New version → Deploy</b> karna zaroori hai. Sirf save karne se live URL update nahi hota.</li>
+          <li>Passcode dono jagah same hona chahiye — Code.gs ka <code>ADMIN_KEY</code> aur admin login ka passcode.</li>
+        </ol>
+      </details>
+    </div>
+  </section>
+</main>
+
+<script src="setup.js"></script>
+</body>
+</html>

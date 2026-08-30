@@ -9,11 +9,11 @@ const CONFIG = {
   /* Paste your Google Apps Script Web App URL here after deploying.
      Example: "https://script.google.com/macros/s/AKfy.../exec"
      Leave empty to run the store in demo mode (orders saved locally). */
-  API_URL: "https://script.google.com/macros/s/AKfycby-ygU0zKnUExzCtEVkqgjDOgYeRyyPX9zKl7QN4AMe6W90GL61MTptwAS-zj0WraRi/exec",
+  API_URL: "",
 
   /* Set true only if you have added real photos inside images/products/.
      When false, SOLEORA draws its own premium shoe artwork (no 404s). */
-  USE_IMAGE_FILES: true,
+  USE_IMAGE_FILES: false,
 
   FREE_SHIP_ABOVE: 999,
   SHIPPING_FEE: 99,
@@ -666,15 +666,31 @@ async function submitOrder(e){
 
   let saved = false;
   if (CONFIG.API_URL){
+    const body = JSON.stringify({ action: "createOrder", order });
     try{
       const res = await fetch(CONFIG.API_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ action: "createOrder", order })
+        body
       });
       const json = await res.json();
       saved = !!json.ok;
-    }catch(err){ saved = false; }
+    }catch(err){
+      /* Apps Script redirects its response through another domain, which some
+         browsers block. Resend without reading the reply - the row still lands
+         in the sheet, we just cannot confirm it here. */
+      try{
+        await fetch(CONFIG.API_URL, {
+          method: "POST", mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body
+        });
+        saved = true;
+      }catch(err2){
+        saved = false;
+        console.warn("SOLEORA: order could not reach the backend.", err2);
+      }
+    }
   }
 
   const local = JSON.parse(localStorage.getItem(KEY.orders) || "[]");
@@ -690,7 +706,7 @@ async function submitOrder(e){
       <h2>Order placed</h2>
       <p>Thanks ${esc(data.name.split(" ")[0])} — we'll call you on ${esc(data.phone)} to confirm.</p>
       <p class="success__id">${order.orderId}</p>
-      <p class="form__note">${saved ? "Saved to the store's order sheet." : "Saved on this device. Connect the Google Sheet backend to sync orders."}</p>
+      <p class="form__note">${saved ? "Saved to the store's order sheet." : "Saved on this device. Open setup.html to connect the Google Sheet."}</p>
       <button class="btn btn--dark btn--block" data-close="checkoutModal" style="margin-top:18px">Keep shopping</button>
     </div>`;
   showToast("Order placed 🎉");
@@ -928,10 +944,10 @@ function initNewsletter(){
     input.classList.toggle("is-bad", !ok);
     if (!ok){ showToast("Enter a valid email address", "warn"); return; }
     if (CONFIG.API_URL){
-      fetch(CONFIG.API_URL, {
-        method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ action: "subscribe", email: input.value.trim() })
-      }).catch(() => {});
+      const body = JSON.stringify({ action: "subscribe", email: input.value.trim() });
+      fetch(CONFIG.API_URL, { method:"POST", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body })
+        .catch(() => fetch(CONFIG.API_URL, { method:"POST", mode:"no-cors", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body }))
+        .catch(() => {});
     }
     input.value = "";
     showToast("Subscribed successfully 🎉");
