@@ -1,0 +1,91 @@
+/* ==========================================================================
+   SOLEORA — admin.css (layers on top of style.css tokens)
+   ========================================================================== */
+body.admin{background:#f5f4f1}
+
+/* ---------- LOGIN GATE ---------- */
+.gate{min-height:100dvh;display:grid;place-items:center;padding:24px;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 20% 20%,#e9e4ff,transparent 45%),radial-gradient(circle at 80% 70%,#ffe0d3,transparent 45%),#faf8f5}
+.gate__card{background:#fff;border-radius:var(--r-xl);padding:36px 32px;width:min(400px,100%);
+  box-shadow:var(--sh-3);display:flex;flex-direction:column;gap:12px;text-align:center;animation:popIn .4s var(--ease)}
+.gate__ico{width:56px;height:56px;border-radius:18px;background:var(--navy);color:var(--mint);display:grid;place-items:center;margin:0 auto 6px}
+.gate__ico .ico{width:26px;height:26px}
+.gate h1{font-size:1.5rem}
+.gate p{color:var(--ink-3);font-size:.88rem}
+.gate input{padding:13px 16px;border-radius:12px;border:1.6px solid var(--line);background:#fdfcfb;outline:0;font-weight:600;text-align:center;letter-spacing:.06em}
+.gate input:focus{border-color:var(--navy);background:#fff}
+.gate input.is-bad{border-color:var(--coral);background:#fff6f2}
+.gate__note{font-size:.74rem}
+.gate__note code{background:var(--cream);padding:2px 6px;border-radius:5px}
+.gate__back{font-size:.82rem;font-weight:700;color:var(--ink-2);margin-top:4px}
+.gate__back:hover{color:var(--coral)}
+
+/* ---------- SHELL ---------- */
+.adm__bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:12px clamp(14px,3vw,28px);flex-wrap:wrap}
+.adm__brand{display:flex;align-items:center;gap:11px}
+.adm__brand .logo__mark{width:38px;height:38px;border-radius:12px;background:var(--navy);color:var(--mint);display:grid;place-items:center}
+.adm__brand svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.2}
+.adm__brand b{display:block;font-weight:800;letter-spacing:.16em;font-size:.98rem;line-height:1.1}
+.adm__brand em{font-style:normal;font-size:.66rem;color:var(--ink-3);font-weight:600}
+.adm__barTools{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.conn{font-size:.72rem;font-weight:800;letter-spacing:.06em;padding:6px 12px;border-radius:var(--r-pill);background:#f1efec;color:var(--ink-3)}
+.conn.is-live{background:var(--mint);color:#0d6b48}
+.conn.is-demo{background:#ffe6dc;color:#a33c15}
+.adm__main{padding:clamp(18px,3vw,32px);display:flex;flex-direction:column;gap:22px;max-width:1500px;margin-inline:auto}
+
+/* ---------- STATS ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);animation:cardIn .5s var(--ease) backwards;animation-delay:calc(var(--i,0)*70ms)}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.stat span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:800}
+.stat b{display:block;font-size:1.9rem;font-weight:800;letter-spacing:-.02em;margin-top:8px}
+.stat small{font-size:.76rem;color:var(--ink-3);font-weight:600}
+.stat::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:var(--tint,var(--lav));opacity:.45}
+
+/* ---------- PANEL / TABLE ---------- */
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.panel__head{display:flex;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line-2);flex-wrap:wrap}
+.panel__head h2{font-size:1.12rem}
+.panel__tools{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.srch{display:flex;align-items:center;gap:9px;background:#f7f6f3;border-radius:var(--r-pill);padding:9px 16px;min-width:min(300px,70vw)}
+.srch input{border:0;outline:0;background:transparent;font-size:.88rem;font-weight:600;flex:1;min-width:0}
+
+.tablewrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;min-width:820px}
+.tbl th{text-align:left;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding:12px 18px;background:#fbfaf8;border-bottom:1px solid var(--line-2);white-space:nowrap}
+.tbl td{padding:14px 18px;border-bottom:1px solid var(--line-2);font-size:.88rem;vertical-align:middle}
+.tbl tr{transition:background .2s}
+.tbl tbody tr:hover{background:#fbfaf8}
+.tbl__id{font-weight:800;letter-spacing:.04em}
+.tbl__date{display:block;font-size:.74rem;color:var(--ink-3);font-weight:600}
+.tbl__name{font-weight:700}
+.tbl__sub{display:block;font-size:.75rem;color:var(--ink-3);font-weight:600}
+.tbl__items{max-width:290px;font-size:.82rem;color:var(--ink-2)}
+.tbl__total{font-weight:800;white-space:nowrap}
+.tbl__empty{padding:38px;text-align:center;color:var(--ink-3);font-weight:600}
+
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:800;padding:5px 11px;border-radius:var(--r-pill);background:#f1efec;color:var(--ink-2)}
+.st-select{appearance:none;border:1.5px solid var(--line);border-radius:var(--r-pill);padding:7px 14px;font-size:.8rem;font-weight:700;background:#fff;cursor:pointer;transition:border-color .2s}
+.st-select:hover{border-color:var(--navy)}
+.st-New{background:#e2eeff;color:#1c4b91}
+.st-Confirmed{background:var(--lav);color:#4a37a8}
+.st-Packed{background:#fff3d9;color:#8a6410}
+.st-Shipped{background:#e6f4ff;color:#0f5e86}
+.st-Delivered{background:var(--mint);color:#0d6b48}
+.st-Cancelled{background:#ffe1e1;color:#a12626}
+
+.ord{display:flex;flex-direction:column;gap:14px}
+.ord__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.ord__rows{display:flex;flex-direction:column;gap:8px}
+.ord__rows > div{display:flex;justify-content:space-between;gap:14px;font-size:.88rem}
+.ord__rows span:first-child{color:var(--ink-3);font-weight:600}
+.ord__rows b{font-weight:700;text-align:right}
+.ord__items{background:var(--cream);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.ord__items > div{display:flex;justify-content:space-between;font-size:.86rem;gap:12px}
+
+@media (max-width:720px){
+  .adm__barTools .btn span{display:none}
+  .stat b{font-size:1.6rem}
+}
